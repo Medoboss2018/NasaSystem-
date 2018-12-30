@@ -1,1 +1,1 @@
-worker : node nasa.js
+worker: node nasa.js
