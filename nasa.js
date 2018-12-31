@@ -306,8 +306,7 @@ client.on("message", async message => {
                         no.on("collect", v => {
                             m.delete();
                             message.channel.send("**Broadcast Canceled.**").then(msg => msg.delete(3000));
-                        });
-                            
+                 
                         });
 
 client.on('guildMemberAdd', member => {
