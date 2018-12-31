@@ -287,7 +287,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nas");
 client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 
-  }, 8000);
+  }, 6000);
 
 
 });
