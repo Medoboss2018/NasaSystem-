@@ -302,12 +302,6 @@ client.on("message", async message => {
 
                                             member.sendEmbed(bc);
                                         });
-                        });
-                        no.on("collect", v => {
-                            m.delete();
-                            message.channel.send("**Broadcast Canceled.**").then(msg => msg.delete(3000));
-                 
-                        });
 
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'chat');
