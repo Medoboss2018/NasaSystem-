@@ -264,45 +264,6 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 });
 
-
-client.on("message", async message => {
-    var prefix = "-";
-    var command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-        if(!message.channel.guild) return;
-            var args = message.content.split(" ").slice(1).join(" ");
-            if(command == "-bc") {
-                if(!message.member.hasPermission("ADMINISTRATOR")) {
-                    return message.channel.send("**للأسف لا تمتلك صلاحية `ADMINISTRATOR`**");
-                }
-                    if(!args) {
-                        return message.reply("**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**");
-                    }
-                        message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟\nمحتوى البرودكاست: \`${args}\`**`).then(m => {
-                            m.react("✅")
-                            .then(() => m.react("❌"));
-
-                            let yesFilter = (reaction, user) => reaction.emoji.name == "✅" && user.id == message.author.id;
-                            let noFiler = (reaction, user) => reaction.emoji.name == "❌" && user.id == message.author.id;
-
-                            let yes = m.createReactionCollector(yesFilter);
-                            let no = m.createReactionCollector(noFiler);
-
-                            yes.on("collect", v => {
-                                m.delete();
-                                    message.channel.send(`:ballot_box_with_check: | Done ... The Broadcast Message Has Been Sent For ${message.guild.memberCount} Members`).then(msg => msg.delete(5000));
-                                        message.guild.members.forEach(member => {
-                                            let bc = new Discord.RichEmbed()
-                                            .setColor("RANDOM")
-                                            .setThumbnail(message.author.avatarURL)
-                                            .setTitle("Broadcast")
-                                            .addField("Server", message.guild.name)
-                                            .addField("Sender", message.author.username)
-                                            .addField("Message", args);
-
-                                            member.sendEmbed(bc);
-                                        });
-
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'chat');
     let memberavatar = member.user.avatarURL
