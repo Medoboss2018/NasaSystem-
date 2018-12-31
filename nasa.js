@@ -293,7 +293,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 });
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'hello');
+    let channel = member.guild.channels.find('name', 'chat');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
