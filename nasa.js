@@ -234,7 +234,6 @@ if (message.content.split(' ')[0] == '-m')
 member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
                                                             message.delete();
 });
-});
 
 client.on("message", message => {
     var prefix = "-";
