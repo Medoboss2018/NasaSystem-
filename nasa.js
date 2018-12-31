@@ -16,7 +16,7 @@ client.user.setStatus("dnd")
 
 
 client.on('message', function(msg) {
-    const prefix = '!'
+    const prefix = '-'
     if(msg.content.startsWith (prefix  + 'info')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
@@ -36,7 +36,7 @@ client.on('message', function(msg) {
 });
 
 client.on('message', message => {
-     if (message.content === "!help") {
+     if (message.content === "-help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('     **$clear** ' ,' **مسح الشات** ')
@@ -80,7 +80,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("!bot")) {
+    if (message.content.startsWith("-bot")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
             .setAuthor(client.user.username,client.user.avatarURL)
@@ -103,7 +103,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
          client.on('message', message => {
-            if (message.content === '!bot') {
+            if (message.content === '-bot') {
               message.channel.send('**  By:@! Not Medo#8888 **');
               message.channel.sendFile("./photoshop.PNG");
                
@@ -113,7 +113,7 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-   if (message.content === "!id") {
+   if (message.content === "-id") {
    let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setThumbnail(message.author.avatarURL)
@@ -132,7 +132,7 @@ client.on('message', message => {
      
      let command = message.content.split(" ")[0];
      
-     if (command === "!mute") {
+     if (command === "-mute") {
            if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
      let user = message.mentions.users.first();
      let modlog = client.channels.find('name', 'mute-log');
@@ -165,7 +165,7 @@ client.on('message', message => {
      
      let command = message.content.split(" ")[0];
      
-     if (command === "!unmute") {
+     if (command === "-unmute") {
            if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
      let user = message.mentions.users.first();
      let modlog = client.channels.find('name', 'mute-log');
@@ -194,7 +194,7 @@ client.on('message', message => {
    
    
    
-   var prefix = "!"
+   var prefix = "-"
    client.on('message', message => {
      if (message.author.x5bz) return;
      if (!message.content.startsWith(prefix)) return;
@@ -237,7 +237,7 @@ client.on('message', message => {
    
    
 	 client.on("message", message => {
-    var prefix = "!";
+    var prefix = "-";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
@@ -249,7 +249,7 @@ client.on('message', message => {
       message.channel.sendMessage("", {embed: {
         title: "Done | تم مسح الشات",
 
-      }}).then(msg => {msg.delete(3000)});
+      }}).then(msg => {msg.delete(1000)});
                           }
 
      
@@ -265,10 +265,10 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 });
 
 client.on("message", message => {
-    var prefix = "!";
+    var prefix = "-";
  
             var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "$bc")) {
+            if (message.content.startsWith(prefix + "-bc")) {
                          if (!message.member.hasPermission("CONNECT"))  return;
                             let embed4 = new Discord.RichEmbed()
              .setDescription("**:white_check_mark: | جاري ارسال البرودكاست**")
@@ -315,7 +315,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nas");
 client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 
-  }, 7000);
+  }, 8000);
 
 
 });
