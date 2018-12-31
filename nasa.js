@@ -39,13 +39,13 @@ client.on('message', message => {
      if (message.content === "-help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **$clear** ' ,' **مسح الشات** ')
-.addField('     **$bc**  ' ,' **نشر رساله للأعضاء** ')
-.addField('     **$info**  ' ,' **معلومات السرفر** ')
-.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقق** ')
-.addField('     **$bot**  ' ,' **معلومات البوت** ')
-.addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
-.addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
+.addField('     **-clear** ' ,' **مسح الشات** ')
+.addField('     **-bc**  ' ,' **نشر رساله للأعضاء** ')
+.addField('     **-info**  ' ,' **معلومات السرفر** ')
+.addField('     **-id**  ' ,' **حتى تعرف الاى دى حقق** ')
+.addField('     **-bot**  ' ,' **معلومات البوت** ')
+.addField('     **-mute**  ' ,' **لإعطاء شخص ميوت** ')
+.addField('     **-unmute**  ' ,' **لفك من شخص ميوت** ')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
     }
@@ -266,6 +266,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 
 client.on("message", async message => {
+    var prefix = "-";
     var command = message.content.split(" ")[0];
     command = command.slice(prefix.length);
         if(!message.channel.guild) return;
@@ -308,47 +309,6 @@ client.on("message", async message => {
                         });
                             
                         });
-            }
-            if(command == "bco") {
-                if(!message.member.hasPermission("ADMINISTRATOR")) {
-                    return message.channel.send("**للأسف لا تمتلك صلاحية `ADMINISTRATOR`**");
-                }
-                    if(!args) {
-                        return message.reply("**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**");
-                    }
-                        message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟\nمحتوى البرودكاست: \`${args}\`**`).then(m => {
-                            m.react("✅")
-                            .then(() => m.react("❌"));
-
-                            let yesFilter = (reaction, user) => reaction.emoji.name == "✅" && user.id == message.author.id;
-                            let noFiler = (reaction, user) => reaction.emoji.name == "❌" && user.id == message.author.id;
-
-                            let yes = m.createReactionCollector(yesFilter);
-                            let no = m.createReactionCollector(noFiler);
-
-                            yes.on("collect", v => {
-                                m.delete();
-                                    message.channel.send(`:ballot_box_with_check: | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.filter(r => r.presence.status !== "offline").size} Members`).then(msg => msg.delete(5000));
-                                        message.guild.members.filter(r => r.presence.status !== "offline").forEach(member => {
-                                            let bco = new Discord.RichEmbed()
-                                            .setColor("RANDOM")
-                                            .setThumbnail(message.author.avatarURL)
-                                            .setTitle("Broadcast")
-                                            .addField("Server", message.guild.name)
-                                            .addField("Sender", message.author.username)
-                                            .addField("Message", args);
-
-                                            member.sendEmbed(bco);
-                                        });
-                        });
-                        no.on("collect", v => {
-                            m.delete();
-                            message.channel.send("**Broadcast Canceled.**").then(msg => msg.delete(3000));
-                        });
-                            
-                        });
-            }
-});
 
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'chat');
