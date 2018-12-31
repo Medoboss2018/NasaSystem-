@@ -10,7 +10,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : NOT MEDO ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`!help `,"http://twitch.tv/medo149")
+client.user.setGame(`-help `,"http://twitch.tv/medo149")
 client.user.setStatus("dnd")
 });
 
@@ -39,45 +39,17 @@ client.on('message', message => {
      if (message.content === "-help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **$clear** ' ,' **مسح الشات** ')
-.addField('     **$bc**  ' ,' **نشر رساله للأعضاء** ')
-.addField('     **$info**  ' ,' **معلومات السرفر** ')
-.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقق** ')
-.addField('     **$bot**  ' ,' **معلومات البوت** ')
-.addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
-.addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
+.addField('     **-clear** ' ,' **مسح الشات** ')
+.addField('     **-bc**  ' ,' **نشر رساله للأعضاء** ')
+.addField('     **-info**  ' ,' **معلومات السرفر** ')
+.addField('     **-id**  ' ,' **حتى تعرف الاى دى حقق** ')
+.addField('     **-bot**  ' ,' **معلومات البوت** ')
+.addField('     **-mute**  ' ,' **لإعطاء شخص ميوت** ')
+.addField('     **-unmute**  ' ,' **لفك من شخص ميوت** ')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
     }
 });
-
-
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("528696580950327306");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("528696580950327306");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
- channel.send(`تم دعوته بواسطة  ${Invite.inviter} `) ;         
- }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
-});
-
 
 client.on('message', message => {
     if (message.content.startsWith("-bot")) {
