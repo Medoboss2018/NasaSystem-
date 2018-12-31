@@ -118,9 +118,7 @@ client.on('message', message => {
        .addField('تم ميوت:', `${user.username}#${user.discriminator} (${user.id})`)
        .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
       
-      if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles 
-
-**').catch(console.error);
+      if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
     
      if (message.guild.member(user).roles.has(muteRole.id)) {
    return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت**").catch(console.error);
@@ -152,9 +150,7 @@ client.on('message', message => {
        .addField('تم فك الميوت عن:', `${user.username}#${user.discriminator} (${user.id})`)
        .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
    
-     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles 
-
-**').catch(console.error);
+     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles**').catch(console.error);
    
      if (message.guild.member(user).removeRole(muteRole.id)) {
    return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
