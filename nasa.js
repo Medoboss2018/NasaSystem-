@@ -17,7 +17,7 @@ client.user.setStatus("dnd")
 
 client.on('message', function(msg) {
     const prefix = '-'
-    if(msg.content.startsWith (prefix  + 'info')) {
+    if(msg.content.startsWith (prefix + 'info')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -39,13 +39,13 @@ client.on('message', message => {
      if (message.content === "-help") {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('     **-clear** ' ,' **مسح الشات** ')
-.addField('     **-bc**  ' ,' **نشر رساله للأعضاء** ')
-.addField('     **-info**  ' ,' **معلومات السرفر** ')
-.addField('     **-id**  ' ,' **حتى تعرف الاى دى حقق** ')
-.addField('     **-bot**  ' ,' **معلومات البوت** ')
-.addField('     **-mute**  ' ,' **لإعطاء شخص ميوت** ')
-.addField('     **-unmute**  ' ,' **لفك من شخص ميوت** ')
+.addField('     **$clear** ' ,' **مسح الشات** ')
+.addField('     **$bc**  ' ,' **نشر رساله للأعضاء** ')
+.addField('     **$info**  ' ,' **معلومات السرفر** ')
+.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقق** ')
+.addField('     **$bot**  ' ,' **معلومات البوت** ')
+.addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
+.addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
     }
@@ -118,7 +118,9 @@ client.on('message', message => {
        .addField('تم ميوت:', `${user.username}#${user.discriminator} (${user.id})`)
        .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
       
-      if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
+      if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles 
+
+**').catch(console.error);
     
      if (message.guild.member(user).roles.has(muteRole.id)) {
    return message.reply("**:white_check_mark: .. تم اعطاء العضو ميوت**").catch(console.error);
@@ -150,7 +152,9 @@ client.on('message', message => {
        .addField('تم فك الميوت عن:', `${user.username}#${user.discriminator} (${user.id})`)
        .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
    
-     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
+     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles 
+
+**').catch(console.error);
    
      if (message.guild.member(user).removeRole(muteRole.id)) {
    return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
@@ -179,8 +183,12 @@ client.on('message', message => {
      if (command == "kick") {
                   if(!message.channel.guild) return message.reply('** This command only for servers**');
             
-     if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-     if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
+     if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` 
+
+Permission**");
+     if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` 
+
+Permission**");
      let user = message.mentions.users.first();
      let reason = message.content.split(" ").slice(2).join(" ");
      
@@ -221,19 +229,32 @@ client.on('message', message => {
       message.channel.sendMessage("", {embed: {
         title: "Done | تم مسح الشات",
 
-      }}).then(msg => {msg.delete(1000)});
+      }}).then(msg => {msg.delete(3000)});
                           }
 
      
 }); 
 
-client.on('message', message => {
-if (message.content.split(' ')[0] == '-m')
- message.guild.members.forEach( member => {
-         if (!message.member.hasPermission("CONNECT"))  return;
-member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
-                                                            message.delete();
+client.on("message", message => {
+    var prefix = "-";
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("CONNECT"))  return;
+                            let embed4 = new Discord.RichEmbed()
+             .setDescription("**:white_check_mark: | جاري ارسال البرودكاست**")
+           .addField("مرسل البرودكاست" , message.author)
+          .addField("نص البرودكاست" ,args.join("  "))
+                            .addField("عدد الاعضاء المرسل لهم :busts_in_silhouette:" ,` **[${message.guild.memberCount}]**`,true)
+                                                            .setColor("#008000")
+                                message.channel.sendEmbed(embed4);
+                                                      message.delete();
+                            
+                          }
 });
+ 
+
+
 
 client.on("ready", async  => {
 setInterval(function(){
@@ -265,7 +286,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nas");
 client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 
-  }, 6000);
+  }, 5000);
 
 
 });
