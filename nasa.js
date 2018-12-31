@@ -292,27 +292,26 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 });
 
-
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'chat');
+    let channel = member.guild.channels.find('name', 'hello');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
+        .setColor('PURPLE')
         .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
-        .addField(':loudspeaker: | نورت السيرفر يا قلبي' , `Welcome to the server, ${member}`)
-        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
+        .addField('🎽 | name :  ',`${member}`)
+        .addField('📢 | اهلا بك في مجتمعك الجديد' , `Welcome to the server, ${member}`)
+        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
                 .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
                
                   .addField("Name:",`<@` + `${member.id}` + `>`, true)
                      
-                                     .addField(' السيرفر', `${member.guild.name}`,true)
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
                                        
-     .setFooter("By @! Not Medo#8888 ")
+     .setFooter(`By ! Medo`)
         .setTimestamp()
    
       channel.sendEmbed(embed);
     });
-	
+
 client.login(process.env.BOT_TOKEN);
