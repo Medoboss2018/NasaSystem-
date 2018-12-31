@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-
-
 client.on('ready', () => {
    console.log(`----------------`);
       console.log(`Desert Bot- Script By : NOT MEDO`);
@@ -10,14 +8,13 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : NOT MEDO ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help `,"http://twitch.tv/medo149")
+client.user.setGame(`!help `,"http://twitch.tv/medo149")
 client.user.setStatus("dnd")
 });
 
-
 client.on('message', function(msg) {
     const prefix = '-'
-    if(msg.content.startsWith (prefix + 'info')) {
+    if(msg.content.startsWith (prefix  + 'info')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -150,7 +147,7 @@ client.on('message', message => {
        .addField('تم فك الميوت عن:', `${user.username}#${user.discriminator} (${user.id})`)
        .addField('بواسطة:', `${message.author.username}#${message.author.discriminator}`)
    
-     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles**').catch(console.error);
+     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
    
      if (message.guild.member(user).removeRole(muteRole.id)) {
    return message.reply("**:white_check_mark: .. تم فك الميوت عن الشخص **").catch(console.error);
@@ -179,10 +176,8 @@ client.on('message', message => {
      if (command == "kick") {
                   if(!message.channel.guild) return message.reply('** This command only for servers**');
             
-     if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS `Permission**");
-
+     if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
      if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
-
      let user = message.mentions.users.first();
      let reason = message.content.split(" ").slice(2).join(" ");
      
@@ -229,6 +224,33 @@ client.on('message', message => {
      
 }); 
 
+client.on('message', message => {
+if (message.content.split(' ')[0] == '-m')
+ message.guild.members.forEach( member => {
+         if (!message.member.hasPermission("CONNECT"))  return;
+member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
+                                                            message.delete();
+});
+});
+
+client.on("message", message => {
+    var prefix = "-";
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("CONNECT"))  return;
+                            let embed4 = new Discord.RichEmbed()
+             .setDescription("**:white_check_mark: | جاري ارسال البرودكاست**")
+           .addField("مرسل البرودكاست" , message.author)
+          .addField("نص البرودكاست" ,args.join("  "))
+                            .addField("عدد الاعضاء المرسل لهم :busts_in_silhouette:" ,` **[${message.guild.memberCount}]**`,true)
+                                                            .setColor("#008000")
+                                message.channel.sendEmbed(embed4);
+                                                      message.delete();
+                            
+                          }
+});
+ 
 client.on("ready", async  => {
 setInterval(function(){
 
@@ -259,7 +281,7 @@ client.channels.find('id', '529080385120895017').setName("Welcome To Nas");
 client.channels.find('id', '529080385120895017').setName("Welcome To Nasa");
 
 
-  }, 5000);
+  }, 7000);
 
 
 });
